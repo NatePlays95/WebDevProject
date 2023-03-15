@@ -1,39 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+:root {
+  --white: #FEF9EF;
+  --black: #0b132b;
+}
+
+* {
+  font-family: Nunito;
+}
+
 body {
-    height: 100vh;
-    width: 100vw;
-    background-color: #222;
-    margin: 0rem;
-    overflow: hidden;
-    user-select: none;
+  background-color: #227C9D;
+  background-image: url(https://images.unsplash.com/photo-1583173451851-dd9ba01f891e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+  height: 600px;
 }
 
-#image-track {
-    display: flex;
-    gap: 4vmin;
-
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(0%, -50%);
+.frame {
+  border-radius: 24px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--black);
+  box-shadow: 12px 8px;
+  
+  padding: 32px;
 }
 
-#image-track > .image {
-    width: 40vmin;
-    height: 56vmin;
-    rotate: -0.05turn;
-    border-radius: 2vmin;
-    object-fit: cover;
-    object-position: 100% 50%;
-    border-color: rgba(255, 255, 255, 0.5);
-
-    transition: transform 0.5s, border-radius 0.5s, border-width 0.2s;
-
-}
-
-#image-track > .image:hover {
-    border-radius: 0.5vmin;
-    transform: scale(200%, 200%) rotate(0.1turn);
-
-    transition: transform 0.5s, border-radius 0.5s, border-width 0.2s;
+#frame-main {
+  color: var(--black);
+  background-color: var(--white);
+  
+  width: min(50vw, 800px);
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 
+
+.button {
+  margin: 8px;
+  
+  border-radius: opx;
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--black);
+  box-shadow: 4px 4px 0px 4px var(--black);
+  
+  background-color: #4CAF50;
+  color: var(--white);
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Sigmar One;
+}
