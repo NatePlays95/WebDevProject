@@ -1,36 +1,20 @@
-const track = document.getElementById("image-track");
 
-window.onmousedown = e => {
-    track.dataset.mouseDownAt = e.clientX;
+
+//link the pages
+
+document.getElementById("btn-social-git").onclick = function() {
+    window.open("https://github.com/NatePlays95", "_blank")
+}
+document.getElementById("btn-social-itch").onclick = function() {
+    window.open("https://nate-the-bard.itch.io", "_blank")
+}
+document.getElementById("btn-social-twi").onclick = function() {
+    window.open("https://twitter.com/95natanmaia", "_blank")
+}
+document.getElementById("btn-social-gift").onclick = function() {
+    window.open("secret.html", "_blank")
+    //link to hidden page
 }
 
-window.onmousemove = e => {
-    if (track.dataset.mouseDownAt === "0") return;
-    
-    const start = parseFloat(track.dataset.mouseDownAt);
-    const mouseDelta = e.clientX - start;
-    const maxDelta = window.innerWidth/2;
-    
-    const percent = (mouseDelta / maxDelta) * -100;
-    const nextPercent = Math.max(0, Math.min(100, parseFloat(track.dataset.prevPercent) + percent));
-    
-    //track.style.transform = `translate(${-nextPercent}%, -50%)`;
-    track.animate({
-        transform: `translate(${-nextPercent}%, -50%)`
-    },{duration: 1200, fill: "forwards"});
 
-    for (const image of track.getElementsByClassName("image")) {
-        //image.style.objectPosition = `${100 -nextPercent}% 50%`;
-        image.animate({
-            objectPosition: `${100 -nextPercent}% center`
-        }, {duration: 1200, fill: "forwards"});
-    }
 
-    track.dataset.nextPercent = nextPercent;
-}
-
-window.onmouseup = e => {
-    track.dataset.mouseDownAt = "0";
-    track.dataset.prevPercent = track.dataset.nextPercent;
-
-}
