@@ -19,11 +19,11 @@ document.getElementById("btn-social-gift").onclick = function() {
 
 
 //add blog posts
+
 var blogFilePaths = []
-var xmlHttp = new XMLHttpRequest()
-xmlHttp.open('GET', 'blog', true)
-xmlHttp.onload = function(e) {
-    var blogFileList = xmlHttp.responseText.split('\n')
+async function getBlogFiles() {
+    var f = await fetch('blog').then(response => response.text())
+    var blogFileList = f.split('\n')
     pattern = /\/.*?\.txt/
     blogFileList.forEach(s => {
         if (s.includes("href")) {
@@ -32,8 +32,7 @@ xmlHttp.onload = function(e) {
         }
     })
     getBlogTexts()
-  };
-xmlHttp.send(null)
+}
 
 let blogFilePromises = []
 function getBlogTexts() {
@@ -72,3 +71,9 @@ function createBlogDiv(text, filepath) {
     //inner.innerHTML = filepath + text
     post.appendChild(inner)
 }
+
+
+
+
+//run
+getBlogFiles()
