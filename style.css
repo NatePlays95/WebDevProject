@@ -12,9 +12,20 @@
 
 body {
   background-color: #227C9D;
+
   background-image: url(https://images.unsplash.com/photo-1603484477859-abe6a73f9366?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
-  background-size: fill;
-  height: 1200px;
+  background-size: cover;
+  height: 600px;
+}
+
+
+@keyframes frameOpen {
+  0%{
+    scale: 0;
+  }
+  100%{
+    scale: 1
+  }
 }
 
 .frame {
@@ -25,6 +36,8 @@ body {
   box-shadow: 8px 8px;
   
   padding: 32px;
+
+  animation: frameOpen 0.3s;
 }
 
 
@@ -35,9 +48,7 @@ body {
 
   width: min(50vw, 800px);
   height: fit-content;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  margin: auto;
 }
 
 @keyframes openVertical {
@@ -88,7 +99,7 @@ body {
 .button:active {
   box-shadow: 4px 0px 0px 0px var(--black);
   transform: translate(0px, 8px);
-  color: var(--black);
+  color: rgba(0,0,0,0.5);
 
   transition: transform 0.05s, box-shadow 0.05s;
 }
@@ -100,6 +111,44 @@ body {
 
 
 
+
+
+
+
+#post-holder {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-items: center;
+  align-items: center;
+}
+
+.mini-post {
+  overflow: hidden;
+  margin: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 200px;
+  width: 30%;
+}
+
+.mini-post-inner {
+  overflow: hidden;
+  height: 200px;
+  --mask: linear-gradient(to bottom, 
+    rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 80%, 
+    rgba(0,0,0, 0) 95%, rgba(0, 0, 0, 0) 0
+  ) 100% 100% / 100% 100% repeat-x;
+  -webkit-mask: var(--mask); 
+  mask: var(--mask);
+}
+
+
+
+
+
+
+
 #frame-port {
   color: var(--black);
   background-color: var(--white);
@@ -107,18 +156,24 @@ body {
 
   width: min(80vw, 1200px);
   height: fit-content;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  margin: auto;
 }
 
 .frame-cat {
   padding: 16px;
   width: 85%;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  margin: auto;
 }
+
+.button-cat {
+  height: 80px;
+  font-size: medium;
+}
+
+/*.button-cat:hover {
+  height: 120px;
+  transition: height 0.3s, transform 0.3s, box-shadow 0.3s;
+}*/
 
 .gallery {
   display: flex;
@@ -140,6 +195,7 @@ body {
   width: auto;
   position: relative;
   overflow: hidden;
+  overflow: visible;
 }
 
 .frame-image2 {
@@ -182,6 +238,7 @@ body {
   font-size: 16px;
   position: absolute;
   width: fit-content;
+  z-index: 10;
 }
 
 
@@ -190,7 +247,7 @@ body {
 
 
 #lightbox {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   position: fixed;
   top: 0;
   left: 0;
